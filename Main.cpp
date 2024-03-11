@@ -10,10 +10,10 @@ int main()
 	int choice = -1;
 	int *choicePtr = &choice;
 
-	String StringOne("Megaman");
+	String StringOne("Bella Goth.");
 	String* strOne = &StringOne;
 
-	String StringTwo("Pac Man.");
+	String StringTwo("Master Chief.");
 	String* strTwo = &StringTwo;
 
 	while (choice != 0)
@@ -72,6 +72,9 @@ void GetChoice(int *a)
 
 void MakeChoice(int* a, String* strOne, String* strTwo)
 {
+
+	int i;
+
 	std::cout << "-------------------------------------------------" << std::endl;
 	std::cout << "You chose to test: ";
 
@@ -97,6 +100,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		std::cout << "\t}" << std::endl;
 		
 		break;
+
 	case 2:
 		std::cout << "2) String(const char* _str);" << std::endl;
 		std::cout << "Both strings in this program were origianlly constructed using this method\nBoth strings are below:" << std::endl;
@@ -104,6 +108,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 		
 		break;
+
 	case 3:
 		std::cout << "3) String(const String & _other);" << std::endl;
 		
@@ -124,6 +129,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		std::cout << "\t};" << std::endl;
 
 		break;
+
 	case 4:
 		std::cout << "4) ~String();" << std::endl;
 		std::cout << "This copy constructor is not run in this program so here is the code:" << std::endl;
@@ -138,31 +144,141 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		std::cout << "\tString::~String() {" << std::endl;
 		std::cout << "\t\tdelete[] str;" << std::endl;
 		std::cout << "\t};" << std::endl;
-		// CODE
+
 		break;
+
 	case 5:
 		std::cout << "5) size_t Length() const;" << std::endl;
-		// CODE
+
+		std::cout << "\t\tName\t\tLength()" << std::endl;
+
+		std::cout << "\ta)\t";
+		strOne->WriteToConsole();
+		std::cout << "\t" << strOne->Length();
+
+		std::cout << std::endl;
+
+		std::cout << "\tb)\t";
+		strTwo->WriteToConsole();
+		std::cout << "\t" << strTwo->Length();
+		std::cout << std::endl;
+
 		break;
+
 	case 6:
 		std::cout << "6) char& CharacterAt(size_t _index);" << std::endl;
-		// CODE
+
+		std::cout << "\t\tName\t\t[0]\t[2]\t[5]\t[7]" << std::endl;
+
+		std::cout << "\ta)\t";
+		strOne->WriteToConsole();
+		std::cout << 
+			"\t" << strOne->CharacterAt(0)<< 
+			"\t" << strOne->CharacterAt(2) << 
+			"\t" << strOne->CharacterAt(5) << 
+			"\t" << strOne->CharacterAt(7) << 
+			"\t";
+
+		std::cout << std::endl;
+
+		std::cout << "\tb)\t";
+		strTwo->WriteToConsole();
+		std::cout <<
+			"\t" << strTwo->CharacterAt(0) <<
+			"\t" << strTwo->CharacterAt(2) <<
+			"\t" << strTwo->CharacterAt(5) <<
+			"\t" << strTwo->CharacterAt(7) <<
+			"\t";
+
 		break;
 	case 7:
 		std::cout << "7) const char& CharacterAt(size_t _index) const;" << std::endl;
+
+		std::cout << "\t\tName\t\t[0]\t[2]\t[5]\t[7]" << std::endl;
+
+		std::cout << "\ta)\t";
+		strOne->WriteToConsole();
+		std::cout <<
+			"\t" << strOne->CharacterAt(0) <<
+			"\t" << strOne->CharacterAt(2) <<
+			"\t" << strOne->CharacterAt(5) <<
+			"\t" << strOne->CharacterAt(7) <<
+			"\t";
+
+		std::cout << std::endl;
+
+		std::cout << "\tb)\t";
+		strTwo->WriteToConsole();
+		std::cout <<
+			"\t" << strTwo->CharacterAt(0) <<
+			"\t" << strTwo->CharacterAt(2) <<
+			"\t" << strTwo->CharacterAt(5) <<
+			"\t" << strTwo->CharacterAt(7) <<
+			"\t";
 		// CODE
 		break;
 	case 8:
 		std::cout << "8) bool EqualTo(const String & _other) const;" << std::endl;
-		// CODE
+		
+		std::cout << "Are \"";
+		strOne->WriteToConsole();
+		std::cout << "\" and \"";
+		strTwo->WriteToConsole();
+		std::cout
+			<< "\" equal? " 
+			<< strTwo->EqualTo(*strOne) 
+			<< "(1 = yes, 0 = no)"
+			<< "\n(can you get the Strings to be equal without changing the code?)" << std::endl;
+
 		break;
 	case 9:
 		std::cout << "9) String& Append(const String & _str);" << std::endl;
-		// CODE
+
+		std::cout << "Enter 1 to append string A to string B.\nEnter 2 to append string B to string A.\n:";
+
+		std::cin >> i;
+
+		if (i == 1)
+		{
+			
+			strOne->Append(*strTwo);
+		}
+		else if (i == 2)
+		{
+
+			strTwo->Append(*strOne);
+		
+		}
+		else
+		{
+			std::cout << "Invalid Entry! Strings remain the same.";
+		}
+		writeBothStrings(strOne, strTwo);
+
 		break;
 	case 10:
 		std::cout << "10) String& Prepend(const String & _str);" << std::endl;
-		// CODE
+
+		std::cout << "Enter 1 to prepend string A to string B.\nEnter 2 to prepend string B to string A.\n:";
+
+		std::cin >> i;
+
+		if (i == 1)
+		{
+
+			strOne->Prepend(*strTwo);
+		}
+		else if (i == 2)
+		{
+
+			strTwo->Prepend(*strOne);
+
+		}
+		else
+		{
+			std::cout << "Invalid Entry! Strings remain the same.";
+		}
+		writeBothStrings(strOne, strTwo);
 		break;
 	case 11:
 		std::cout << "11) const char* CStr() const;" << std::endl;
