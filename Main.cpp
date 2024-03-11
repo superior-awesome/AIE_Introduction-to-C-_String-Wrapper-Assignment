@@ -10,7 +10,7 @@ int main()
 	int choice = -1;
 	int *choicePtr = &choice;
 
-	String StringOne = String();
+	String StringOne("Megaman");
 	String* strOne = &StringOne;
 
 	String StringTwo("Pac Man.");
@@ -29,6 +29,9 @@ int main()
 
 void GetChoice(int *a)
 {
+
+	std::cout << "-------------------------------------------------\n Your options to choose from are:\n" << std::endl;
+
 	std::cout << "0) To Exit" << std::endl;
 
 	std::cout << "1) String();" << std::endl;
@@ -59,47 +62,82 @@ void GetChoice(int *a)
 
 	std::cout << "24) String operator+(const String & _rhs);" << std::endl;
 	std::cout << "25) String& operator+=(const String & _other);" << std::endl;
-	std::cout << "----- " << std::endl;
+	std::cout << "0) To Exit" << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "enter a number to test that class method: ";
+	std::cout << "enter a number to test that class method: (YOU MAY NEED TO SCROLL UP)";
 	std::cin >> *a;
 	
 }
 
 void MakeChoice(int* a, String* strOne, String* strTwo)
 {
-
+	std::cout << "-------------------------------------------------" << std::endl;
 	std::cout << "You chose to test: ";
 
 	switch (*a)
 	{
 	case 1:
 		std::cout << "1) String();" << std::endl;
-		std::cout << "This default constructor is not called as a part of this program" << std::endl;
+		std::cout << "This default constructor is empty and so running tests on it is hard... so here is the code:" << std::endl;
+		std::cout << "\nString.h:" << std::endl;
+		std::cout << "\tclass String:" << std::endl;
+		std::cout << "\t{" << std::endl;
+		std::cout << "\t\tString();" << std::endl;
+		std::cout << "\n\t\t...\n" << std::endl;
+		std::cout << "\t}" << std::endl;
 
+		std::cout << "\nString.cpp:" << std::endl;
+		std::cout << "\tString::String() " << std::endl;
+		std::cout << "\t{" << std::endl;
+		std::cout << "\t\tstr = nullptr;" << std::endl;
+		std::cout << "\t\tlength = 0;" << std::endl;
+		std::cout << "\t\tcapacity = 0;" << std::endl;
+		std::cout << "\t" << std::endl;
+		std::cout << "\t}" << std::endl;
+		
 		break;
 	case 2:
 		std::cout << "2) String(const char* _str);" << std::endl;
-		std::cout << "One strings in this program was constructed using this method: " << std::endl;
+		std::cout << "Both strings in this program were origianlly constructed using this method\nBoth strings are below:" << std::endl;
+		writeBothStrings(strOne,strTwo);
 
-
-		std::cout << "Both strings in this program were constructed using this method\nBoth strings below:" << std::endl;
-
-		std::cout << "\ta) ";
-		strOne->WriteToConsole();
-		std::cout << std::endl;
-
-		std::cout << "\tb) ";
-		strTwo->WriteToConsole();
-		std::cout << std::endl;
-		// CODE
+		
 		break;
 	case 3:
 		std::cout << "3) String(const String & _other);" << std::endl;
-		// CODE
+		
+		std::cout << "This copy constructor is not run so here is the code:" << std::endl;
+		std::cout << "\nString.h:" << std::endl;
+		std::cout << "\tclass String:" << std::endl;
+		std::cout << "\t{" << std::endl;
+		std::cout << "\t\tString(const String & _other);" << std::endl;
+		std::cout << "\n\t\t...\n" << std::endl;
+		std::cout << "\t}" << std::endl;
+
+		std::cout << "\nString.cpp" << std::endl;
+		std::cout << "\tString::String(const String & _other) {" << std::endl;
+		std::cout << "\t\tlength = _other.length;" << std::endl;
+		std::cout << "\t\tcapacity = _other.capacity;" << std::endl;
+		std::cout << "\t\tstr = new char[capacity];" << std::endl;
+		std::cout << "\t\tstrcpy_s(str, capacity, _other.str);" << std::endl;
+		std::cout << "\t};" << std::endl;
+
 		break;
 	case 4:
 		std::cout << "4) ~String();" << std::endl;
+		std::cout << "This copy constructor is not run in this program so here is the code:" << std::endl;
+		std::cout << "\nString.h:" << std::endl;
+		std::cout << "\tclass String:" << std::endl;
+		std::cout << "\t{" << std::endl;
+		std::cout << "\t\t~String();" << std::endl;
+		std::cout << "\n\t\t...\n" << std::endl;
+		std::cout << "\t}" << std::endl;
+
+		std::cout << "\nString.cpp" << std::endl;
+		std::cout << "\tString::~String() {" << std::endl;
+		std::cout << "\t\tdelete[] str;" << std::endl;
+		std::cout << "\t};" << std::endl;
 		// CODE
 		break;
 	case 5:
@@ -203,4 +241,14 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 	std::cout << std::endl;
 	std::cout << std::endl;
 
+}
+
+void writeBothStrings(String* a, String* b) {
+	std::cout << "\ta) ";
+	a->WriteToConsole();
+	std::cout << std::endl;
+
+	std::cout << "\tb) ";
+	b->WriteToConsole();
+	std::cout << std::endl;
 }
