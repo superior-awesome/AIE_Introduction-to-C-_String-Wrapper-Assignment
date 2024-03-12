@@ -1,34 +1,7 @@
-#include <iostream>
-#include "header.h"
-#include "String.h"
-#include "TestTool.h"
 
-
-int main()
-{
-	std::cout << "Hello World." << std::endl;
-
-	int choice = -1;
-	int *choicePtr = &choice;
-
-	String StringOne("Bella Goth.");
-	String* strOne = &StringOne;
-
-	String StringTwo("Master Chief.");
-	String* strTwo = &StringTwo;
-
-	while (choice != 0)
-	{
-		GetChoice(choicePtr);
-		MakeChoice(choicePtr, strOne, strTwo);
-	}
-
-	std::cout << "Ending program";
-
-	return 0;
-}
 /*
-void GetChoice(int *a)
+
+void GetChoice(int* a)
 {
 
 	std::cout << "-------------------------------------------------\n Your options to choose from are:\n" << std::endl;
@@ -68,7 +41,7 @@ void GetChoice(int *a)
 
 	std::cout << "enter a number to test that class method: (YOU MAY NEED TO SCROLL UP)";
 	std::cin >> *a;
-	
+
 }
 
 void MakeChoice(int* a, String* strOne, String* strTwo)
@@ -99,20 +72,20 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		std::cout << "\t\tcapacity = 0;" << std::endl;
 		std::cout << "\t" << std::endl;
 		std::cout << "\t}" << std::endl;
-		
+
 		break;
 
 	case 2:
 		std::cout << "2) String(const char* _str);" << std::endl;
 		std::cout << "Both strings in this program were origianlly constructed using this method\nBoth strings are below:" << std::endl;
-		writeBothStrings(strOne,strTwo);
+		writeBothStrings(strOne, strTwo);
 
-		
+
 		break;
 
 	case 3:
 		std::cout << "3) String(const String & _other);" << std::endl;
-		
+
 		std::cout << "This copy constructor is not run so here is the code:" << std::endl;
 		std::cout << "\nString.h:" << std::endl;
 		std::cout << "\tclass String:" << std::endl;
@@ -173,11 +146,11 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 		std::cout << "\ta)\t";
 		strOne->WriteToConsole();
-		std::cout << 
-			"\t" << strOne->CharacterAt(0)<< 
-			"\t" << strOne->CharacterAt(2) << 
-			"\t" << strOne->CharacterAt(5) << 
-			"\t" << strOne->CharacterAt(7) << 
+		std::cout <<
+			"\t" << strOne->CharacterAt(0) <<
+			"\t" << strOne->CharacterAt(2) <<
+			"\t" << strOne->CharacterAt(5) <<
+			"\t" << strOne->CharacterAt(7) <<
 			"\t";
 
 		std::cout << std::endl;
@@ -220,14 +193,14 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		break;
 	case 8:
 		std::cout << "8) bool EqualTo(const String & _other) const;" << std::endl;
-		
+
 		std::cout << "Are \"";
 		strOne->WriteToConsole();
 		std::cout << "\" and \"";
 		strTwo->WriteToConsole();
 		std::cout
-			<< "\" equal? " 
-			<< strTwo->EqualTo(*strOne) 
+			<< "\" equal? "
+			<< strTwo->EqualTo(*strOne)
 			<< "(1 = yes, 0 = no)"
 			<< "\n(can you get the Strings to be equal without changing the code?)" << std::endl;
 
@@ -241,14 +214,14 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 		if (i == 1)
 		{
-			
+
 			strOne->Append(*strTwo);
 		}
 		else if (i == 2)
 		{
 
 			strTwo->Append(*strOne);
-		
+
 		}
 		else
 		{
@@ -360,6 +333,8 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 }
 
+*/
+
 void writeBothStrings(String* a, String* b) {
 	std::cout << "\ta) ";
 	a->WriteToConsole();
@@ -369,5 +344,3 @@ void writeBothStrings(String* a, String* b) {
 	b->WriteToConsole();
 	std::cout << std::endl;
 }
-
-*/
