@@ -6,6 +6,7 @@
 //	Constructors and Destructor--------------------------------------
 
 String::String() 
+	//	Default constructor.
 {
 	str = nullptr;
 	length = 0;
@@ -13,6 +14,7 @@ String::String()
 };
 
 String::String(const char* _str)
+	//	Constructor takes a pointer to a C-Style string.
 {
 	length = strlen(_str);
 	capacity = length + 1;
@@ -20,26 +22,33 @@ String::String(const char* _str)
 	strcpy_s(str, capacity, _str);
 };
 
-String::String(const String& _other) {
+String::String(const String& _other) 
+	//	Copy Constructor.
+{
 	length = _other.length;
 	capacity = _other.capacity;
 	str = new char[capacity];
 	strcpy_s(str, capacity, _other.str);
 };
 
-String::~String() {
+String::~String() 
+	//	Destructor.
+{
 	delete[] str;
 };
 
 //	Methods/Functions-------------------------------------------------
 
 size_t String::Length() const 
+	//	Returns the number of Char in the String.
 {
 	return length;
 };
 
-char& String::CharacterAt(size_t _index) {
-	
+char& String::CharacterAt(size_t _index) 
+	//	Returns a reference to the char at index "_index" of the 
+	//	string, starting at 0.
+{
 	if (_index < 0	|| _index > length)
 	{
 		static char nullChar = '\0';
@@ -52,6 +61,8 @@ char& String::CharacterAt(size_t _index) {
 };
 
 const char& String::CharacterAt(size_t _index) const 
+	//	Returns a reference to the char at index "_index" of the 
+	//	string, starting at 0.
 {
 	if (_index < 0 || _index > length)
 	{
@@ -65,6 +76,8 @@ const char& String::CharacterAt(size_t _index) const
 };
 
 bool String::EqualTo(const String& _other) const
+	//	Returns true if all char values in the char array pointer
+	//	*str are the same, returns true. Otherwise returns false.
 {	
 	if(strcmp(str,_other.str) == 0)
 	{
@@ -76,6 +89,7 @@ bool String::EqualTo(const String& _other) const
 };
 
 String& String::Append(const String& _str)
+	//	Appends the argument string to the called string.
 {
 	length += _str.Length();
 
@@ -99,10 +113,9 @@ String& String::Append(const String& _str)
 }
 
 String& String::Prepend(const String& _str)
+	//	Prepends the argument string to the called string.
 {
-
 	length += _str.Length();
-
 	if ((length + 1) > capacity)
 	{
 		char* newStr = new char[length + 1];
@@ -126,12 +139,14 @@ String& String::Prepend(const String& _str)
 }
 
 const char* String::CStr() const 
+	//	Returns the char value at the first index of *str.
 {
 	return str;
 };
 
 
 String& String::ToLower() 
+	//	Converst the string to lower case.
 {
 	for (int i = 0; str[i] != '\0'; i++)
 	{
@@ -143,6 +158,7 @@ String& String::ToLower()
 };
 
 String& String::ToUpper() 
+	//	Converst the string to upper case.
 {
 	for (int i = 0; str[i] != '\0'; i++)
 	{
@@ -154,13 +170,21 @@ String& String::ToUpper()
 };
 
 int String::Find(const String& _str) 
+	/*
+		Function attempts to locate _str inside str, and if sucessful
+		returns the index there the sub-string is found. If uncessful,
+		returns "-1".
+	*/
 {
 	return Find(0, _str);
 };
 
 int String::Find(size_t _startIndex, const String& _str) 
-{
 	/*
+		Function attempts to locate _str inside str, and if sucessful
+		returns the index there the sub-string is found. If uncessful,
+		returns "-1".
+	
 		Nope that this function originally returned a size_t var
 		which cannot be signed (+/-), however it has been altered
 		to retun a int var so that "-1" can be returned as an error
@@ -170,7 +194,7 @@ int String::Find(size_t _startIndex, const String& _str)
 		size 2147483647, which is accounted for in the for-loop 
 		below.
 	*/
-
+{
 	size_t _len = _str.Length();
 
 	if (_len > length)
@@ -198,6 +222,9 @@ int String::Find(size_t _startIndex, const String& _str)
 String& String::Replace(const String& _find, const String& _replace) 
 {
 	/*
+		Function finds and replaces a sub-string within *str with 
+		a new substring. Replaces all instances of this substring.
+	 
 		Note that this function does not account for characters that
 		are represented in more than one substring, for example, the
 		sub-string "ABAB" could conceptually be identified in the
@@ -275,6 +302,9 @@ String& String::Replace(const String& _find, const String& _replace)
 String& String::ReadFromConsole()
 {
 	/*
+		Reads a stream of input from console and converts that 
+		into a String.
+		
 		Note, this is unable to take strings longer than 63 char
 		long.
 	*/
@@ -299,6 +329,7 @@ String& String::ReadFromConsole()
 };
 
 String& String::WriteToConsole() 
+	//	Writes the contents of *str to console
 {
 	std::cout << str;
 
@@ -309,16 +340,21 @@ String& String::WriteToConsole()
 //	Operator Overloads -----------------------------------------------
 
 bool String::operator==(const String& _other) 
+	//	Overloads the == operator to return true if lhs and rhs objects
+	//	char arrays contain the same values.
 {
 	return EqualTo(_other);
 };
 
 bool String::operator!=(const String& _other) 
+//	Overloads the != operator to return true if lhs and rhs objects
+//	char arrays do not contain the same values.
 {
 	return !EqualTo(_other);
 };
 
 String& String::operator=(const String& _str) 
+//	Overloads the = operator to copy the rhs object to the lhs object.
 {
 	length = _str.length;
 	capacity = _str.capacity;
@@ -332,11 +368,15 @@ String& String::operator=(const String& _str)
 };
 
 char& String::operator[](size_t _index) 
+//	Overloads the [] operator to return the char at the index entered
+//	into the square brackets.
 {
 	return str[_index];
 };
 
 const char& String::operator[](size_t _index) const 
+//	Overloads the [] operator to return the char at the index entered
+//	into the square brackets as a const.
 {
 	return str[_index];
 };
@@ -344,6 +384,7 @@ const char& String::operator[](size_t _index) const
 //	Optional Functionality-------------------------------------------
 
 String String::operator+(const String& _rhs)
+//	Returns a new string created by appending the lhs with the rhs.
 {
 	size_t rLen = _rhs.Length();
 	size_t j = 0;
@@ -371,6 +412,7 @@ String String::operator+(const String& _rhs)
 }
 
 String& String::operator+=(const String& _rhs)
+//	Appends the lhs with the rhs.
 {
 	*this = *this + _rhs;
 
