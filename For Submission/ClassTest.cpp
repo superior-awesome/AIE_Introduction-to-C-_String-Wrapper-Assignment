@@ -1,34 +1,5 @@
-#include <iostream>
-#include "header.h"
 
-#include "String.h"
-
-
-int main()
-{
-	std::cout << "Hello World." << std::endl;
-
-	int input = 1;
-	int *a = &input;
-
-	String strOne("Master Cheif ");
-	String* strPtrOne = &strOne;
-
-	String strTwo("Bella Goth ");
-	String* strPtrTwo = &strTwo;
-
-	while (*a != 0)
-	{
-		GetChoice(a);
-		MakeChoice(a, strPtrOne, strPtrTwo);
-
-	}
-
-
-
-
-	return 0;
-}
+/*
 
 void GetChoice(int* a)
 {
@@ -77,12 +48,6 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 {
 
 	int i;
-	int j;
-	int loc;
-
-	String gooseString("HONK");
-	String holder;
-	String* strHolder;
 
 	std::cout << "-------------------------------------------------" << std::endl;
 	std::cout << "You chose to test: ";
@@ -291,348 +256,73 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		break;
 	case 11:
 		std::cout << "11) const char* CStr() const;" << std::endl;
-		strOne->WriteToConsole();
-		std::cout << "\t" << strOne->CStr() << std::endl;
-
-		strTwo->WriteToConsole();
-		std::cout << "\t" << strTwo->CStr() << std::endl;
-
+		// CODE
 		break;
 	case 12:
 		std::cout << "12) String& ToLower();" << std::endl;
-		std::cout << "Enter 1 to lower the case of string A.\nEnter 2 to lower the case of string B.\n:";
-
-		std::cin >> i;
-
-		if (i == 1)
-		{
-			strOne->ToLower();
-		}
-		else if (i == 2)
-		{
-			strTwo->ToLower();
-		}
-		else
-		{
-			std::cout << "Invalid Entry! Strings remain the same.";
-		}
-		writeBothStrings(strOne, strTwo);
-
+		// CODE
 		break;
 	case 13:
 		std::cout << "13) String& ToUpper();" << std::endl;
-		std::cout << "Enter 1 to increase the case of string A.\nEnter 2 to increase the case of string B.\n:";
-
-		std::cin >> i;
-
-		if (i == 1)
-		{
-			strOne->ToUpper();
-		}
-		else if (i == 2)
-		{
-			strTwo->ToUpper();
-		}
-		else
-		{
-			std::cout << "Invalid Entry! Strings remain the same.";
-		}
-		writeBothStrings(strOne, strTwo);
-
+		// CODE
 		break;
 	case 14:
-		
 		std::cout << "14) int Find(const String & _str);" << std::endl;
-
-		std::cout << "Is String A a substring of String B? :"; 
-		std::cout << std::endl;
-		loc = strOne->Find(*strTwo);
-		if (loc == -1)
-		{
-			std::cout << "No, ";
-			strTwo->WriteToConsole();
-			std::cout << " is not a substring of ";
-			strOne->WriteToConsole();
-			std::cout << std::endl;
-		}
-		else
-		{
-			std::cout << "Yes, ";
-			strTwo->WriteToConsole();
-			std::cout << " is can be found in ";
-			strOne->WriteToConsole();
-			std::cout << " at index " << loc << std::endl;
-			std::cout << std::endl;
-		}
-
-
-		std::cout << "Is String B a substring of String A? :" << std::endl;
-
-		loc = strTwo->Find(*strOne);
-		if (loc == -1)
-		{
-			std::cout << "No, ";
-			strOne->WriteToConsole();
-			std::cout << " is not a substring of ";
-			strTwo->WriteToConsole();
-			std::cout << std::endl;
-		}
-		else
-		{
-			std::cout << "Yes, ";
-			strOne->WriteToConsole();
-			std::cout << " is can be found in ";
-			strTwo->WriteToConsole();
-			std::cout << " at index " << loc << std::endl;
-			std::cout << std::endl;
-		}
-
+		// CODE
 		break;
-
 	case 15:
 		std::cout << "15) int Find(size_t _startIndex, const String & _str);" << std::endl;
-
-		std::cout << "Enter a number you would like to check from (cannot be negative):";
-		std::cin >> j;
-
-		std::cout << "Is String A a substring of String B after index " << j << "?" << std::endl;
-		std::cout << std::endl;
-		loc = strOne->Find(j, *strTwo);
-		if (loc == -1)
-		{
-			std::cout << "No, ";
-			strTwo->WriteToConsole();
-			std::cout << " is not a substring of ";
-			strOne->WriteToConsole();
-			std::cout << std::endl;
-		}
-		else
-		{
-			std::cout << "Yes, ";
-			strTwo->WriteToConsole();
-			std::cout << " is can be found in ";
-			strOne->WriteToConsole();
-			std::cout << " at index " << loc << std::endl;
-			std::cout << std::endl;
-		}
-
-
-		std::cout << "Is String B a substring of String A after index " << j << "?" << std::endl;
-
-		loc = strTwo->Find(j,*strOne);
-		if (loc == -1)
-		{
-			std::cout << "No, ";
-			strOne->WriteToConsole();
-			std::cout << " is not a substring of ";
-			strTwo->WriteToConsole();
-			std::cout << std::endl;
-		}
-		else
-		{
-			std::cout << "Yes, ";
-			strOne->WriteToConsole();
-			std::cout << " is can be found in ";
-			strTwo->WriteToConsole();
-			std::cout << " at index " << loc << std::endl;
-			std::cout << std::endl;
-		}
-
+		// CODE
 		break;
-
 	case 16:
 		std::cout << "16) String& Replace(const String & _find, const String & _replace);" << std::endl;
-
-		std::cout << "If either string is inside the other, it will be replaced by an untitile'd goose noise";
-		
-		std::cout << std::endl;
-		loc = strOne->Find(*strTwo);
-		if (loc == -1)
-		{
-			strTwo->WriteToConsole();
-			std::cout << " is not a substring of ";
-			strOne->WriteToConsole();
-		}
-		else
-		{
-			std::cout << "Yes, ";
-			strTwo->WriteToConsole();
-			std::cout << " can be found in ";
-			strOne->WriteToConsole();
-			std::cout << " and will be replaced." << loc << std::endl;
-			std::cout << std::endl;
-			strTwo->Replace(*strOne, gooseString);
-		}
-
-
-		std::cout << "Is String B a substring of String A? :" << std::endl;
-
-		loc = strTwo->Find(*strOne);
-		if (loc == -1)
-		{
-			std::cout << "No, ";
-			strOne->WriteToConsole();
-			std::cout << " is not a substring of ";
-			strTwo->WriteToConsole();
-			std::cout << std::endl;
-		}
-		else
-		{
-			std::cout << "Yes, ";
-			strOne->WriteToConsole();
-			std::cout << " can be found in ";
-			strTwo->WriteToConsole();
-			std::cout << " and will be replaced." << loc << std::endl;
-			std::cout << std::endl;
-			strTwo->Replace(*strOne, gooseString);
-		}
-
-		writeBothStrings(strOne, strTwo);
-
+		// CODE
 		break;
 	case 17:
 		std::cout << "17) String& ReadFromConsole();" << std::endl;
-
-		
-
-		holder = strOne->ReadFromConsole();
-		std::cout << "New String is: ";
-			holder.WriteToConsole();
-			std::cout << std::endl;
-
+		// CODE
 		break;
 	case 18:
 		std::cout << "18) String& WriteToConsole();" << std::endl;
-
-		writeBothStrings(strOne, strTwo);
-
 		// CODE
 		break;
 	case 19:
 		std::cout << "19) bool operator==(const String & _other);" << std::endl;
-		strOne->WriteToConsole();
-		std::cout <<"== ";
-		strTwo->WriteToConsole();
-		std::cout << " returns: ";
-		if ((*strOne) == (*strTwo))
-		{
-			std::cout << "TRUE";
-		}
-		else
-		{
-			std::cout << "FALSE";
-		}
-
-
+		// CODE
 		break;
 	case 20:
 		std::cout << "20) bool operator!=(const String & _other);" << std::endl;
-		strOne->WriteToConsole();
-		std::cout << "= ";
-		strTwo->WriteToConsole();
-		std::cout << " returns: ";
-		if ((*strOne) != (*strTwo))
-		{
-			std::cout << "TRUE";
-		}
-		else
-		{
-			std::cout << "FALSE";
-		}
+		// CODE
 		break;
 	case 21:
 		std::cout << "21) String& operator=(const String & _str);" << std::endl;
-		strOne->WriteToConsole();
-		std::cout << "= ";
-		strTwo->WriteToConsole();
-		std::cout << " returns: " << std::endl;
-		(*strOne) = (*strTwo);
-
-		writeBothStrings(strOne, strTwo);
-
+		// CODE
 		break;
 	case 22:
 		std::cout << "22) char& operator[](size_t _index);" << std::endl;
-		
-		std::cout << "\t\tName\t\t[1]\t[3]\t[6]\t[8]" << std::endl;
-
-		std::cout << "\ta)\t";
-		strOne->WriteToConsole();
-		std::cout <<
-			"\t" << (*strOne)[1] <<
-			"\t" << (*strOne)[3] <<
-			"\t" << (*strOne)[6] <<
-			"\t" << (*strOne)[8] <<
-			"\t";
-
-		std::cout << std::endl;
-
-		std::cout << "\tb)\t";
-		strTwo->WriteToConsole();
-		std::cout <<
-			"\t" << (*strTwo)[1] <<
-			"\t" << (*strTwo)[3] <<
-			"\t" << (*strTwo)[6] <<
-			"\t" << (*strTwo)[8] <<
-			"\t";
-
+		// CODE
 		break;
-
 	case 23:
 		std::cout << "23) const char& operator[](size_t _index) const;" << std::endl;
-		std::cout << "\t\tName\t\t[1]\t[3]\t[6]\t[8]" << std::endl;
-
-		std::cout << "\ta)\t";
-		strOne->WriteToConsole();
-		std::cout <<
-			"\t" << (*strOne)[1] <<
-			"\t" << (*strOne)[3] <<
-			"\t" << (*strOne)[6] <<
-			"\t" << (*strOne)[8] <<
-			"\t";
-
-		std::cout << std::endl;
-
-		std::cout << "\tb)\t";
-		strTwo->WriteToConsole();
-		std::cout <<
-			"\t" << (*strTwo)[1] <<
-			"\t" << (*strTwo)[3] <<
-			"\t" << (*strTwo)[6] <<
-			"\t" << (*strTwo)[8] <<
-			"\t";
-
+		// CODE
 		break;
-
 	case 24:
+
 		std::cout << "24) String operator+(const String & _rhs);" << std::endl;
-		
-		holder = (*strOne)+(*strTwo);
-
-		strOne->WriteToConsole();
-		std::cout << " + ";
-		strTwo->WriteToConsole();
-		std::cout << " = ";
-		holder.WriteToConsole();
-		std::cout << " (assigned to a new String object).";
-		
+		// CODE
 		break;
-
 	case 25:
 		std::cout << "25) String& operator+=(const String & _other);" << std::endl;
-		strOne->WriteToConsole();
-		std::cout << " += ";
-		strTwo->WriteToConsole();
-		std::cout << " results in:" << std::endl;
-		writeBothStrings(strOne, strTwo);
-
-
+		// CODE
 		break;
-
+	case 26:
+		std::cout << "26) " << std::endl;
+		// CODE
+		break;
+	case 27:
+		// CODE
+		break;
 	default:
-
-		std::cout << "Number not recognised, exiting program." << std::endl;
-
 		*a = 0;
 		break;
 
@@ -642,6 +332,8 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 	std::cout << std::endl;
 
 }
+
+*/
 
 void writeBothStrings(String* a, String* b) {
 	std::cout << "\ta) ";
