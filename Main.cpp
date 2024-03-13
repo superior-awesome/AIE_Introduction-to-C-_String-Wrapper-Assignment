@@ -359,7 +359,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 	std::cout << std::endl;
 
 }
-
+/*
 void writeBothStrings(String* a, String* b) {
 	std::cout << "\ta) ";
 	a->WriteToConsole();
