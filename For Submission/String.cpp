@@ -195,9 +195,7 @@ int String::Find(size_t _startIndex, const String& _str)
 		below.
 	*/
 {
-	size_t _len_t = _str.Length();
-
-	int _len = static_cast<int>(_len_t);
+	size_t _len = _str.Length();
 
 	if (_len > length)
 	{		
@@ -251,6 +249,7 @@ String& String::Replace(const String& _find, const String& _replace)
 	{
 		loc = Find(count, _find);
 
+		std::cout << loc << "-" << count << std::endl;
 		if (loc != prevLoc)
 		{
 			numberOfInstances++;
