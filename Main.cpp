@@ -1,31 +1,39 @@
 #include <iostream>
 #include "header.h"
-
+#include "Task_3_Header.h"
+#include <fstream>
 #include "String.h"
 
 
 int main()
 {
-	std::cout << "Hello World." << std::endl;
+	//std::cout << "Hello World." << std::endl;
 
-	int input = 1;
-	int *a = &input;
-
-	String strOne("Master Cheif ");
+	String strOne("Master_Cheif");
 	String* strPtrOne = &strOne;
 
-	String strTwo("Bella Goth ");
+	String strTwo("Bella_Goth");
 	String* strPtrTwo = &strTwo;
 
-	while (*a != 0)
-	{
-		GetChoice(a);
-		MakeChoice(a, strPtrOne, strPtrTwo);
+	int maxCount = 25;
 
+	std::fstream file;
+	std::fstream* filePtr = &file;
+
+	//file.open("TestOutput.txt", std::ios::out);
+
+	filePtr->open("TestOutput.txt", std::ios::out);
+
+	if (filePtr->is_open())
+	{
+
+		for(int i = 1; i< 26; i++)
+		{
+			MakeChoiceToFile(i, filePtr, strPtrOne, strPtrTwo);
+		}
 	}
 
-
-
+	filePtr->close();
 
 	return 0;
 }
@@ -82,7 +90,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 	String gooseString("HONK");
 	String holder;
-	String* strHolder;
+	//String* strHolder;
 
 	std::cout << "-------------------------------------------------" << std::endl;
 	std::cout << "You chose to test: ";
@@ -114,7 +122,6 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		std::cout << "2) String(const char* _str);" << std::endl;
 		std::cout << "Both strings in this program were origianlly constructed using this method\nBoth strings are below:" << std::endl;
 		writeBothStrings(strOne, strTwo);
-
 
 		break;
 
@@ -493,8 +500,6 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 	case 17:
 		std::cout << "17) String& ReadFromConsole();" << std::endl;
 
-		
-
 		holder = strOne->ReadFromConsole();
 		std::cout << "New String is: ";
 			holder.WriteToConsole();
@@ -651,4 +656,649 @@ void writeBothStrings(String* a, String* b) {
 	std::cout << "\tb) ";
 	b->WriteToConsole();
 	std::cout << std::endl;
+}
+
+void MakeChoiceToFile(int a, std::fstream* _file, String* strOne, String* strTwo)
+{
+	std::cout << a <<", ";
+	int i;
+	int j;
+	int loc;
+
+	String gooseString("HONK");
+	String holder;
+	//String* strHolder;
+
+	(*_file) << "-------------------------------------------------" << std::endl;
+	(*_file) << "You chose to test: ";
+
+	//_file->open("TestOutput.txt", std::ios::out);
+
+	if (_file->is_open())
+	{
+
+
+	switch (a)
+	{
+	case 1:
+		
+		(*_file) << "1) String();" << std::endl;
+		(*_file) << "This default constructor is empty and so running tests on it is hard... so here is the code:" << std::endl;
+		(*_file) << "\nString.h:" << std::endl;
+		(*_file) << "\tclass String:" << std::endl;
+		(*_file) << "\t{" << std::endl;
+		(*_file) << "\t\tString();" << std::endl;
+		(*_file) << "\n\t\t...\n" << std::endl;
+		(*_file) << "\t}" << std::endl;
+
+		(*_file) << "\nString.cpp:" << std::endl;
+		(*_file) << "\tString::String() " << std::endl;
+		(*_file) << "\t{" << std::endl;
+		(*_file) << "\t\tstr = nullptr;" << std::endl;
+		(*_file) << "\t\tlength = 0;" << std::endl;
+		(*_file) << "\t\tcapacity = 0;" << std::endl;
+		(*_file) << "\t" << std::endl;
+		(*_file) << "\t}" << std::endl;
+
+		break;
+
+	case 2:
+		(*_file) << "2) String(const char* _str);" << std::endl;
+		(*_file) << "Both strings in this program were origianlly constructed using this method\nBoth strings are below:" << std::endl;
+		
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+
+		break;
+
+	case 3:
+		(*_file) << "3) String(const String & _other);" << std::endl;
+
+		(*_file) << "This copy constructor is not run so here is the code:" << std::endl;
+		(*_file) << "\nString.h:" << std::endl;
+		(*_file) << "\tclass String:" << std::endl;
+		(*_file) << "\t{" << std::endl;
+		(*_file) << "\t\tString(const String & _other);" << std::endl;
+		(*_file) << "\n\t\t...\n" << std::endl;
+		(*_file) << "\t}" << std::endl;
+
+		(*_file) << "\nString.cpp" << std::endl;
+		(*_file) << "\tString::String(const String & _other) {" << std::endl;
+		(*_file) << "\t\tlength = _other.length;" << std::endl;
+		(*_file) << "\t\tcapacity = _other.capacity;" << std::endl;
+		(*_file) << "\t\tstr = new char[capacity];" << std::endl;
+		(*_file) << "\t\tstrcpy_s(str, capacity, _other.str);" << std::endl;
+		(*_file) << "\t};" << std::endl;
+
+		break;
+
+	case 4:
+		(*_file) << "4) ~String();" << std::endl;
+		(*_file) << "This copy constructor is not run in this program so here is the code:" << std::endl;
+		(*_file) << "\nString.h:" << std::endl;
+		(*_file) << "\tclass String:" << std::endl;
+		(*_file) << "\t{" << std::endl;
+		(*_file) << "\t\t~String();" << std::endl;
+		(*_file) << "\n\t\t...\n" << std::endl;
+		(*_file) << "\t}" << std::endl;
+
+		(*_file) << "\nString.cpp" << std::endl;
+		(*_file) << "\tString::~String() {" << std::endl;
+		(*_file) << "\t\tdelete[] str;" << std::endl;
+		(*_file) << "\t};" << std::endl;
+
+		break;
+
+	case 5:
+		(*_file) << "5) size_t Length() const;" << std::endl;
+
+		(*_file) << "\t\tName\t\tLength()" << std::endl;
+
+		(*_file) << "\ta)\t";
+		(*_file) << strOne->CStr();
+		(*_file) << "\t" << strOne->Length();
+
+		(*_file) << std::endl;
+
+		(*_file) << "\tb)\t";
+		(*_file) << strTwo->CStr();
+		(*_file) << "\t" << strTwo->Length();
+		(*_file) << std::endl;
+
+		break;
+
+	case 6:
+		(*_file) << "6) char& CharacterAt(size_t _index);" << std::endl;
+
+		(*_file) << "\t\tName\t\t[0]\t[2]\t[5]\t[7]" << std::endl;
+
+		(*_file) << "\ta)\t";
+		(*_file) << strOne->CStr();
+		(*_file) <<
+			"\t" << strOne->CharacterAt(0) <<
+			"\t" << strOne->CharacterAt(2) <<
+			"\t" << strOne->CharacterAt(5) <<
+			"\t" << strOne->CharacterAt(7) <<
+			"\t";
+
+		(*_file) << std::endl;
+
+		(*_file) << "\tb)\t";
+		(*_file) << strTwo->CStr();
+		(*_file) <<
+			"\t" << strTwo->CharacterAt(0) <<
+			"\t" << strTwo->CharacterAt(2) <<
+			"\t" << strTwo->CharacterAt(5) <<
+			"\t" << strTwo->CharacterAt(7) <<
+			"\t";
+
+		break;
+	case 7:
+		(*_file) << "7) const char& CharacterAt(size_t _index) const;" << std::endl;
+
+		(*_file) << "\t\tName\t\t[0]\t[2]\t[5]\t[7]" << std::endl;
+
+		(*_file) << "\ta)\t";
+		(*_file) << strOne->CStr();
+		(*_file) <<
+			"\t" << strOne->CharacterAt(0) <<
+			"\t" << strOne->CharacterAt(2) <<
+			"\t" << strOne->CharacterAt(5) <<
+			"\t" << strOne->CharacterAt(7) <<
+			"\t";
+
+		(*_file) << std::endl;
+
+		(*_file) << "\tb)\t";
+		(*_file) << strTwo->CStr();
+		(*_file) <<
+			"\t" << strTwo->CharacterAt(0) <<
+			"\t" << strTwo->CharacterAt(2) <<
+			"\t" << strTwo->CharacterAt(5) <<
+			"\t" << strTwo->CharacterAt(7) <<
+			"\t";
+		// CODE
+		break;
+	case 8:
+		(*_file) << "8) bool EqualTo(const String & _other) const;" << std::endl;
+
+		(*_file) << "Are \"";
+		(*_file) << strOne->CStr();
+		(*_file) << "\" and \"";
+		(*_file) << strTwo->CStr();
+		(*_file)
+			<< "\" equal? "
+			<< strTwo->EqualTo(*strOne)
+			<< "(1 = yes, 0 = no)"
+			<< "\n(can you get the Strings to be equal without changing the code?)" << std::endl;
+
+		break;
+	case 9:
+		(*_file) << "9) String& Append(const String & _str);" << std::endl;
+
+		(*_file) << "Enter 1 to append string A to string B.\nEnter 2 to append string B to string A.\n:";
+		std::cout << "Enter 1 to append string A to string B.\nEnter 2 to append string B to string A.\n:" << std::endl;
+
+		std::cin >> i;
+
+		if (i == 1)
+		{
+
+			strOne->Append(*strTwo);
+		}
+		else if (i == 2)
+		{
+
+			strTwo->Append(*strOne);
+
+		}
+		else
+		{
+			(*_file) << "Invalid Entry! Strings remain the same.";
+		}
+		
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+		break;
+	case 10:
+		(*_file) << "10) String& Prepend(const String & _str);" << std::endl;
+
+		(*_file) << "Enter 1 to prepend string A to string B.\nEnter 2 to prepend string B to string A.\n:";
+		std::cout << "Enter 1 to prepend string A to string B.\nEnter 2 to prepend string B to string A.\n:" << std::endl;
+
+		std::cin >> i;
+
+		if (i == 1)
+		{
+
+			strOne->Prepend(*strTwo);
+		}
+		else if (i == 2)
+		{
+
+			strTwo->Prepend(*strOne);
+
+		}
+		else
+		{
+			(*_file) << "Invalid Entry! Strings remain the same.";
+		}
+		
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+		break;
+	case 11:
+		(*_file) << "11) const char* CStr() const;" << std::endl;
+		(*_file) << strOne->CStr();
+		(*_file) << "\t" << strOne->CStr() << std::endl;
+
+		(*_file) << strTwo->CStr();
+		(*_file) << "\t" << strTwo->CStr() << std::endl;
+
+		break;
+	case 12:
+		(*_file) << "12) String& ToLower();" << std::endl;
+		(*_file) << "Enter 1 to lower the case of string A.\nEnter 2 to lower the case of string B.\n:";
+		std::cout << "Enter 1 to lower the case of string A.\nEnter 2 to lower the case of string B.\n:" << std::endl;
+
+		std::cin >> i;
+
+		if (i == 1)
+		{
+			strOne->ToLower();
+		}
+		else if (i == 2)
+		{
+			strTwo->ToLower();
+		}
+		else
+		{
+			(*_file) << "Invalid Entry! Strings remain the same.";
+		}
+		
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+		break;
+	case 13:
+		(*_file) << "13) String& ToUpper();" << std::endl;
+		(*_file) << "Enter 1 to increase the case of string A.\nEnter 2 to increase the case of string B.\n:";
+		std::cout << "Enter 1 to increase the case of string A.\nEnter 2 to increase the case of string B.\n:" << std::endl;
+
+		std::cin >> i;
+
+		if (i == 1)
+		{
+			strOne->ToUpper();
+		}
+		else if (i == 2)
+		{
+			strTwo->ToUpper();
+		}
+		else
+		{
+			(*_file) << "Invalid Entry! Strings remain the same.";
+		}
+		
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+		break;
+	case 14:
+
+		(*_file) << "14) int Find(const String & _str);" << std::endl;
+
+		(*_file) << "Is String A a substring of String B? :";
+		(*_file) << std::endl;
+		loc = strOne->Find(*strTwo);
+		if (loc == -1)
+		{
+			(*_file) << "No, ";
+			(*_file) << strTwo->CStr();
+			(*_file) << " is not a substring of ";
+			(*_file) << strOne->CStr();
+			(*_file) << std::endl;
+		}
+		else
+		{
+			(*_file) << "Yes, ";
+			(*_file) << strTwo->CStr();
+			(*_file) << " is can be found in ";
+			(*_file) << strOne->CStr();
+			(*_file) << " at index " << loc << std::endl;
+			(*_file) << std::endl;
+		}
+
+
+		(*_file) << "Is String B a substring of String A? :" << std::endl;
+
+		loc = strTwo->Find(*strOne);
+		if (loc == -1)
+		{
+			(*_file) << "No, ";
+			(*_file) << strOne->CStr();
+			(*_file) << " is not a substring of ";
+			(*_file) << strTwo->CStr();
+			(*_file) << std::endl;
+		}
+		else
+		{
+			(*_file) << "Yes, ";
+			(*_file) << strOne->CStr();
+			(*_file) << " is can be found in ";
+			(*_file) << strTwo->CStr();
+			(*_file) << " at index " << loc << std::endl;
+			(*_file) << std::endl;
+		}
+
+		break;
+
+	case 15:
+		(*_file) << "15) int Find(size_t _startIndex, const String & _str);" << std::endl;
+
+		(*_file) << "Enter a number you would like to check from (cannot be negative):";
+		std::cout << "Enter a number you would like to check from (cannot be negative):" << std::endl;
+		std::cin >> j;
+
+		(*_file) << "Is String A a substring of String B after index " << j << "?" << std::endl;
+		(*_file) << std::endl;
+		loc = strOne->Find(j, *strTwo);
+		if (loc == -1)
+		{
+			(*_file) << "No, ";
+			(*_file) << strTwo->CStr();
+			(*_file) << " is not a substring of ";
+			(*_file) << strOne->CStr();
+			(*_file) << std::endl;
+		}
+		else
+		{
+			(*_file) << "Yes, ";
+			(*_file) << strTwo->CStr();
+			(*_file) << " is can be found in ";
+			(*_file) << strOne->CStr();
+			(*_file) << " at index " << loc << std::endl;
+			(*_file) << std::endl;
+		}
+
+
+		(*_file) << "Is String B a substring of String A after index " << j << "?" << std::endl;
+
+		loc = strTwo->Find(j, *strOne);
+		if (loc == -1)
+		{
+			(*_file) << "No, ";
+			(*_file) << strOne->CStr();
+			(*_file) << " is not a substring of ";
+			(*_file) << strTwo->CStr();
+			(*_file) << std::endl;
+		}
+		else
+		{
+			(*_file) << "Yes, ";
+			(*_file) << strOne->CStr();
+			(*_file) << " is can be found in ";
+			(*_file) << strTwo->CStr();
+			(*_file) << " at index " << loc << std::endl;
+			(*_file) << std::endl;
+		}
+
+		break;
+
+	case 16:
+		(*_file) << "16) String& Replace(const String & _find, const String & _replace);" << std::endl;
+
+		(*_file) << "If either string is inside the other, it will be replaced by an untitile'd goose noise";
+
+		(*_file) << std::endl;
+		loc = strOne->Find(*strTwo);
+		if (loc == -1)
+		{
+			(*_file) << strTwo->CStr();
+			(*_file) << " is not a substring of ";
+			(*_file) << strOne->CStr();
+		}
+		else
+		{
+			(*_file) << "Yes, ";
+			(*_file) << strTwo->CStr();
+			(*_file) << " can be found in ";
+			(*_file) << strOne->CStr();
+			(*_file) << " and will be replaced." << loc << std::endl;
+			(*_file) << std::endl;
+			strTwo->Replace(*strOne, gooseString);
+		}
+
+
+		(*_file) << "Is String B a substring of String A? :" << std::endl;
+
+		loc = strTwo->Find(*strOne);
+		if (loc == -1)
+		{
+			(*_file) << "No, ";
+			(*_file) << strOne->CStr();
+			(*_file) << " is not a substring of ";
+			(*_file) << strTwo->CStr();
+			(*_file) << std::endl;
+		}
+		else
+		{
+			(*_file) << "Yes, ";
+			(*_file) << strOne->CStr();
+			(*_file) << " can be found in ";
+			(*_file) << strTwo->CStr();
+			(*_file) << " and will be replaced." << loc << std::endl;
+			(*_file) << std::endl;
+			strTwo->Replace(*strOne, gooseString);
+		}
+
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+		break;
+	case 17:
+		(*_file) << "17) String& ReadFromConsole();" << std::endl;
+
+
+
+		holder = strOne->ReadFromConsole();
+		(*_file) << "New String is: ";
+		holder.WriteToConsole();
+		(*_file) << std::endl;
+
+		break;
+	case 18:
+		(*_file) << "18) String& WriteToConsole();" << std::endl;
+
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+		// CODE
+		break;
+	case 19:
+		(*_file) << "19) bool operator==(const String & _other);" << std::endl;
+		(*_file) << strOne->CStr();
+		(*_file) << "== ";
+		(*_file) << strTwo->CStr();
+		(*_file) << " returns: ";
+		if ((*strOne) == (*strTwo))
+		{
+			(*_file) << "TRUE";
+		}
+		else
+		{
+			(*_file) << "FALSE";
+		}
+
+
+		break;
+	case 20:
+		(*_file) << "20) bool operator!=(const String & _other);" << std::endl;
+		(*_file) << strOne->CStr();
+		(*_file) << "= ";
+		(*_file) << strTwo->CStr();
+		(*_file) << " returns: ";
+		if ((*strOne) != (*strTwo))
+		{
+			(*_file) << "TRUE";
+		}
+		else
+		{
+			(*_file) << "FALSE";
+		}
+		break;
+	case 21:
+		(*_file) << "21) String& operator=(const String & _str);" << std::endl;
+		(*_file) << strOne->CStr();
+		(*_file) << "= ";
+		(*_file) << strTwo->CStr();
+		(*_file) << " returns: " << std::endl;
+		(*strOne) = (*strTwo);
+
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+		break;
+	case 22:
+		(*_file) << "22) char& operator[](size_t _index);" << std::endl;
+
+		(*_file) << "\t\tName\t\t[1]\t[3]\t[6]\t[8]" << std::endl;
+
+		(*_file) << "\ta)\t";
+		(*_file) << strOne->CStr();
+		(*_file) <<
+			"\t" << (*strOne)[1] <<
+			"\t" << (*strOne)[3] <<
+			"\t" << (*strOne)[6] <<
+			"\t" << (*strOne)[8] <<
+			"\t";
+
+		(*_file) << std::endl;
+
+		(*_file) << "\tb)\t";
+		(*_file) << strTwo->CStr();
+		(*_file) <<
+			"\t" << (*strTwo)[1] <<
+			"\t" << (*strTwo)[3] <<
+			"\t" << (*strTwo)[6] <<
+			"\t" << (*strTwo)[8] <<
+			"\t";
+
+		break;
+
+	case 23:
+		(*_file) << "23) const char& operator[](size_t _index) const;" << std::endl;
+		(*_file) << "\t\tName\t\t[1]\t[3]\t[6]\t[8]" << std::endl;
+
+		(*_file) << "\ta)\t";
+		(*_file) << strOne->CStr();
+		(*_file) <<
+			"\t" << (*strOne)[1] <<
+			"\t" << (*strOne)[3] <<
+			"\t" << (*strOne)[6] <<
+			"\t" << (*strOne)[8] <<
+			"\t";
+
+		(*_file) << std::endl;
+
+		(*_file) << "\tb)\t";
+		(*_file) << strTwo->CStr();
+		(*_file) <<
+			"\t" << (*strTwo)[1] <<
+			"\t" << (*strTwo)[3] <<
+			"\t" << (*strTwo)[6] <<
+			"\t" << (*strTwo)[8] <<
+			"\t";
+
+		break;
+
+	case 24:
+		(*_file) << "24) String operator+(const String & _rhs);" << std::endl;
+
+		holder = (*strOne) + (*strTwo);
+
+		(*_file) << strOne->CStr();
+		(*_file) << " + ";
+		(*_file) << strTwo->CStr();
+		(*_file) << " = ";
+		(*_file) << holder.CStr();
+		(*_file) << " (assigned to a new String object).";
+
+		break;
+
+	case 25:
+		(*_file) << "25) String& operator+=(const String & _other);" << std::endl;
+		(*_file) << strOne->CStr();
+		(*_file) << " += ";
+		(*_file) << strTwo->CStr();
+		(*_file) << " results in:" << std::endl;
+		
+		(*_file) << "\ta) ";
+		(*_file) << strOne->CStr();
+		(*_file) << std::endl;
+
+		(*_file) << "\tb) ";
+		(*_file) << strTwo->CStr();
+		(*_file) << std::endl;
+
+		break;
+
+	default:
+
+		(*_file) << "Number not recognised, exiting program." << std::endl;
+
+		a = 0;
+		break;
+
+	}
+
+	(*_file) << std::endl;
+	(*_file) << std::endl;
+
+
+
+	}
 }
