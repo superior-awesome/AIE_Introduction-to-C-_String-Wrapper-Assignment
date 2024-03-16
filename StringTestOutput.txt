@@ -1,0 +1,28 @@
+Date: 17 \ 2 \ 2024	Time: 5:49:10	Successful: 100.00%.
+Test 0 Length Successful 
+Test 1 CharacterAt Successful 
+Test 2 const CharacterAt Successful 
+Test 3 EqualTo Successful 
+Test 4 Append Successful 
+Test 5 Prepend Successful 
+Test 6 CStr<QED below> 
+"(*_file) << "strOne->CSty() << \n; ":Master_Chief
+"(*_file) << "strTwo->CSty() << \n; ":Bella_Goth
+Test Result : Successful 
+Test 7 ToLower Successful 
+Test 8 ToUpper Successful 
+Test 9 Find Successful 
+Test 10 Find<_startIndex> Successful 
+Test 11 Replace Successful 
+Test 12 ReadFromConsole<Cannot be automated. QED in Task two Assignement.> Successful 
+Test 13 WriteFromConsole<Cannot be sent to a file. QED in Task two Assignement.> Successful 
+Test 14 operator== Successful 
+Test 15 operator!= Successful 
+Test 16 operator= Successful 
+Test 17 operator[] Successful 
+Test 18 const operator[] Successful 
+Test 19 operator+ Successful 
+Test 20 operator+= Successful 
+______________________________
+
+

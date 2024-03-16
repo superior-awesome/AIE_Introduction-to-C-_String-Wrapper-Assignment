@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <fstream>
 #include <ctime>
@@ -9,6 +11,7 @@
 #include "String.h"
 
 
+
 int main()
 {
 
@@ -18,11 +21,11 @@ int main()
 	String strTwo("Bella_Goth");
 	String* strPtrTwo = &strTwo;
 
-
 	std::fstream file;
 	std::fstream* filePtr = &file;
 	
-	filePtr->open("StringTestOutput.txt", std::ios::out | std::ios::app);	
+	//filePtr->open("StringTestOutput.txt", std::ios::out | std::ios::app);	
+	filePtr->open("StringTestOutput.txt", std::ios::out );	
 
 	if (filePtr->is_open())
 	{
@@ -413,12 +416,27 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		std::cout << std::setprecision(2) << std::fixed;
 		(*_file) << std::setprecision(2) << std::fixed;
 
-		(*_file) 
-			<< "Date: " 
-			<< __DATE__
-			<<" Time: "
-			<< __TIME__
-			<< " Successful: "
+		time_t now = time(NULL);
+
+		char* string_now = ctime(&now);
+		struct tm* localTime = localtime(&now);
+
+		int curYear = localTime->tm_year + 1900;
+
+		(*_file)
+			<< "Date: "
+			<< localTime->tm_mday
+			<< " \\ "
+			<< localTime->tm_mon
+			<<" \\ "
+			<< curYear
+			<<"\tTime: "
+			<< localTime->tm_sec
+			<< ":"
+			<< localTime->tm_min
+			<< ":"
+			<< localTime->tm_hour
+			<< "\tSuccessful: "
 			<< successRate
 			<< "%."
 			<< std::endl;
