@@ -1,13 +1,16 @@
 #include <iostream>
+#include <fstream>
+#include <ctime>
+#include <time.h>
+#include <iomanip>
+
 #include "header.h"
 #include "Task_3_Header.h"
-#include <fstream>
 #include "String.h"
 
 
 int main()
 {
-	//std::cout << "Hello World." << std::endl;
 
 	String strOne("Master_Chief");
 	String* strPtrOne = &strOne;
@@ -15,25 +18,15 @@ int main()
 	String strTwo("Bella_Goth");
 	String* strPtrTwo = &strTwo;
 
-	int maxCount = 25;
 
 	std::fstream file;
 	std::fstream* filePtr = &file;
-
 	
-	//filePtr->open("TestOutput.txt", std::ios::out | std::ios::app);	//	Uncomment to Append not replace.
-	filePtr->open("TestOutput.txt", std::ios::out);
+	filePtr->open("StringTestOutput.txt", std::ios::out | std::ios::app);	
 
 	if (filePtr->is_open())
 	{
-
 		TestingWriteToFile(filePtr, strPtrOne, strPtrTwo);
-		
-
-		//for(int i = 5; i< 26; i++)
-//		{
-//			MakeChoiceToFile(i, filePtr, strPtrOne, strPtrTwo);
-//		}
 	}
 
 	filePtr->close();
@@ -98,10 +91,6 @@ void resetStrings(String *strOne, String *strTwo) {
 
 
 	(*strTwo) = (*strTwoDummyPtr);
-
-	strOne->WriteToConsole();
-	strTwo->WriteToConsole();
-	std::cout << "\n\n";
 
 }
 
@@ -260,10 +249,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 
 		strTwo->ToUpper();
 
-		(*_file) << case8Str.CStr() << std::endl;
-		(*_file) << strTwo->CStr() << std::endl;
-
-
 		if (
 			strTwo->EqualTo(case8Str)
 			)
@@ -402,9 +387,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		const int F = 2;
 		const int G = 4;
 		const int H = 6;
-		(*_file) << (*strOne)[E] << (*strOne)[F]<<(*strOne)[G]<<"\n";
-		(*_file) << (*strTwo)[E] << (*strTwo)[F]<<(*strTwo)[G]<<"\n";
-		(*_file) << "\n";
 
 		if (
 			(*strOne)[E] == 'M' &&
@@ -449,8 +431,34 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 	
 
 		//Printing Results to a File;
+		
+		time_t ct = time(0);
+		//string currenttime = 
 
-		(*_file) << "DATETIME - To do." << std::endl;
+		float successCounter = 0;
+		for (bool result : successArray)
+		{
+			if (result == true)
+			{
+				successCounter++;
+			}
+		}
+
+		float successRate = (successCounter/numberOfTests)*100;
+
+
+		std::cout << std::setprecision(2) << std::fixed;
+		(*_file) << std::setprecision(2) << std::fixed;
+
+		(*_file) 
+			<< "Date: " 
+			<< __DATE__
+			<<" Time: "
+			<< __TIME__
+			<< " Successful: "
+			<< successRate
+			<< "%."
+			<< std::endl;
 
 		for (int k = 0; k < numberOfTests; k++)
 		{
@@ -459,6 +467,8 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 			PrintForS(k, _file, successArray);
 
 		}
+
+		(*_file) << "\n\n\n";
 	}
 
 }
@@ -500,10 +510,10 @@ void PrintNameToFile(int i,std::fstream* _file, String* strOne, String* strTwo)
 			resetStrings(strOne, strTwo);
 			(*_file) << "CStr<QED below> " << std::endl;
 			(*_file) 
-				<< "\"(*_file) << \"strOne->CSty(); \":" 
+				<< "\"(*_file) << \"strOne->CSty() << \\n; \":" 
 				<< strOne->CStr() 
 				<< "\n"
-				<< "\"(*_file) << \"strTwo->CSty(); \":" 
+				<< "\"(*_file) << \"strTwo->CSty() << \\n; \":" 
 				<< strTwo->CStr() 
 				<< "\nTest Result : " ;
 			break;
