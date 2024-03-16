@@ -22,12 +22,15 @@ int main()
 
 	//file.open("TestOutput.txt", std::ios::out);
 
-	filePtr->open("TestOutput.txt", std::ios::out);
+	filePtr->open("TestOutput.txt", std::ios::out | std::ios::app);
 
 	if (filePtr->is_open())
 	{
 
-		for(int i = 1; i< 26; i++)
+
+		
+
+		for(int i = 5; i< 26; i++)
 		{
 			MakeChoiceToFile(i, filePtr, strPtrOne, strPtrTwo);
 		}
@@ -681,7 +684,7 @@ void MakeChoiceToFile(int a, std::fstream* _file, String* strOne, String* strTwo
 	switch (a)
 	{
 	case 1:
-		
+		/*
 		(*_file) << "1) String();" << std::endl;
 		(*_file) << "This default constructor is empty and so running tests on it is hard... so here is the code:" << std::endl;
 		(*_file) << "\nString.h:" << std::endl;
@@ -699,6 +702,7 @@ void MakeChoiceToFile(int a, std::fstream* _file, String* strOne, String* strTwo
 		(*_file) << "\t\tcapacity = 0;" << std::endl;
 		(*_file) << "\t" << std::endl;
 		(*_file) << "\t}" << std::endl;
+		*/
 
 		break;
 
