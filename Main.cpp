@@ -115,8 +115,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 	if (_file->is_open())
 	{
 
-
-		
 		//case 0:
 		resetStrings(strOne, strTwo);
 		if (strOne->Length() == 12 && strTwo->Length() == 10)
@@ -124,10 +122,8 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 			successArray[0] = true;
 
 		}
-			
-	
+				
 		//case 1:
-
 		resetStrings(strOne, strTwo);
 		if (
 			strOne->CharacterAt(0) == 'M' && 
@@ -146,7 +142,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 				
 		//case 2:
-
 		resetStrings(strOne, strTwo);
 
 		const int A = 0;
@@ -171,8 +166,7 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 			
 
-			//	case 3:
-
+		//	case 3:
 		resetStrings(strOne, strTwo);
 
 		String case3Str("Master_Chief");
@@ -189,7 +183,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 
 	
 		//	case 4:
-
 		resetStrings(strOne, strTwo);
 
 
@@ -206,7 +199,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 
 		
 		//	case 5:
-
 		resetStrings(strOne, strTwo);
 
 		String case5Str("Bella_GothMaster_Chief");
@@ -219,8 +211,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 			successArray[5] = true;
 
 		}
-
-
 
 		//	case 6:
 		// Logic captured at the printing function below.
@@ -242,7 +232,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 			
 		//	case 8:
-
 		resetStrings(strOne, strTwo);
 
 		String case8Str("BELLA_GOTH");
@@ -258,7 +247,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 
 		
 		//	case 9:
-
 		resetStrings(strOne, strTwo);
 
 		String case9Str("Goth");
@@ -274,7 +262,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 
 		//	case 10:
-
 		resetStrings(strOne, strTwo);
 
 		if (
@@ -288,9 +275,7 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 			successArray[10] = true;
 		}
 
-
-		//	case 11:
-			
+		//	case 11:		
 
 		resetStrings(strOne, strTwo);
 
@@ -306,20 +291,12 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 		
 		//	case 12:
-
 		successArray[12] = true;
 
-
 		//	case 13:
-
 		successArray[13] = true;
 
-
-
-			
-		//	case 14:
-
-	
+		//	case 14:	
 		resetStrings(strOne, strTwo);
 
 		String str14A("ABCD");
@@ -330,11 +307,7 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 			successArray[14] = true;
 		}
 			
-
 		//	case 15:
-
-
-
 		resetStrings(strOne, strTwo);
 
 
@@ -348,8 +321,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 
 		//	case 16:
-
-
 		String str16A("Albion");
 		String str16B("Monkey_Island");
 		
@@ -360,9 +331,7 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 			successArray[16] = true;
 		}
 
-
 		//	case 17:
-
 		resetStrings(strOne, strTwo);
 		if (
 			(*strOne)[0] == 'M' &&
@@ -380,7 +349,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 
 		//case 18:
-
 		resetStrings(strOne, strTwo);
 
 		const int E = 0;
@@ -405,8 +373,7 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 
 			
-		//case 19:
-			
+		//case 19:			
 		String newString19 = (*strOne) + (*strTwo);
 		String str19case = ("Master_ChiefBella_Goth");
 		if (newString19.EqualTo(str19case))
@@ -428,14 +395,11 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 		
 
-	
-
-		//Printing Results to a File;
+//Printing Results to a File ----------------------
 		
-		time_t ct = time(0);
-		//string currenttime = 
 
 		float successCounter = 0;
+
 		for (bool result : successArray)
 		{
 			if (result == true)
@@ -445,7 +409,6 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		}
 
 		float successRate = (successCounter/numberOfTests)*100;
-
 
 		std::cout << std::setprecision(2) << std::fixed;
 		(*_file) << std::setprecision(2) << std::fixed;
@@ -468,14 +431,12 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 
 		}
 
-		(*_file) << "\n\n\n";
+		(*_file) << "______________________________\n\n\n";
 	}
-
 }
 
 void PrintNameToFile(int i,std::fstream* _file, String* strOne, String* strTwo)
 {
-
 	if (_file->is_open())
 	{
 		switch (i)
@@ -506,7 +467,6 @@ void PrintNameToFile(int i,std::fstream* _file, String* strOne, String* strTwo)
 			break;
 
 		case 6:
-
 			resetStrings(strOne, strTwo);
 			(*_file) << "CStr<QED below> " << std::endl;
 			(*_file) 
@@ -544,7 +504,6 @@ void PrintNameToFile(int i,std::fstream* _file, String* strOne, String* strTwo)
 
 		case 13:
 			(*_file) << "WriteFromConsole<Cannot be sent to a file. QED in Task two Assignement.> ";
-
 			break;
 
 		case 14:
@@ -574,7 +533,6 @@ void PrintNameToFile(int i,std::fstream* _file, String* strOne, String* strTwo)
 		case 20:
 			(*_file) << "operator+= ";
 			break;
-
 
 		default:
 			break;
@@ -607,7 +565,6 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 	String gooseString("HONK");
 	String holder;
-	//String* strHolder;
 
 	std::cout << "-------------------------------------------------" << std::endl;
 	std::cout << "You chose to test: ";
@@ -748,7 +705,6 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 			"\t" << strTwo->CharacterAt(5) <<
 			"\t" << strTwo->CharacterAt(7) <<
 			"\t";
-		// CODE
 		break;
 	case 8:
 		std::cout << "8) bool EqualTo(const String & _other) const;" << std::endl;
@@ -865,10 +821,10 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 		break;
 	case 14:
-		
+
 		std::cout << "14) int Find(const String & _str);" << std::endl;
 
-		std::cout << "Is String A a substring of String B? :"; 
+		std::cout << "Is String A a substring of String B? :";
 		std::cout << std::endl;
 		loc = strOne->Find(*strTwo);
 		if (loc == -1)
@@ -943,7 +899,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 		std::cout << "Is String B a substring of String A after index " << j << "?" << std::endl;
 
-		loc = strTwo->Find(j,*strOne);
+		loc = strTwo->Find(j, *strOne);
 		if (loc == -1)
 		{
 			std::cout << "No, ";
@@ -968,7 +924,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		std::cout << "16) String& Replace(const String & _find, const String & _replace);" << std::endl;
 
 		std::cout << "If either string is inside the other, it will be replaced by an untitile'd goose noise";
-		
+
 		std::cout << std::endl;
 		loc = strOne->Find(*strTwo);
 		if (loc == -1)
@@ -987,8 +943,6 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 			std::cout << std::endl;
 			strTwo->Replace(*strOne, gooseString);
 		}
-
-
 		std::cout << "Is String B a substring of String A? :" << std::endl;
 
 		loc = strTwo->Find(*strOne);
@@ -1019,21 +973,19 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 		holder = strOne->ReadFromConsole();
 		std::cout << "New String is: ";
-			holder.WriteToConsole();
-			std::cout << std::endl;
+		holder.WriteToConsole();
+		std::cout << std::endl;
 
 		break;
 	case 18:
 		std::cout << "18) String& WriteToConsole();" << std::endl;
-
 		writeBothStrings(strOne, strTwo);
 
-		// CODE
 		break;
 	case 19:
 		std::cout << "19) bool operator==(const String & _other);" << std::endl;
 		strOne->WriteToConsole();
-		std::cout <<"== ";
+		std::cout << "== ";
 		strTwo->WriteToConsole();
 		std::cout << " returns: ";
 		if ((*strOne) == (*strTwo))
@@ -1075,7 +1027,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		break;
 	case 22:
 		std::cout << "22) char& operator[](size_t _index);" << std::endl;
-		
+
 		std::cout << "\t\tName\t\t[1]\t[3]\t[6]\t[8]" << std::endl;
 
 		std::cout << "\ta)\t";
@@ -1128,8 +1080,8 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 
 	case 24:
 		std::cout << "24) String operator+(const String & _rhs);" << std::endl;
-		
-		holder = (*strOne)+(*strTwo);
+
+		holder = (*strOne) + (*strTwo);
 
 		strOne->WriteToConsole();
 		std::cout << " + ";
@@ -1137,7 +1089,7 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		std::cout << " = ";
 		holder.WriteToConsole();
 		std::cout << " (assigned to a new String object).";
-		
+
 		break;
 
 	case 25:
@@ -1159,10 +1111,8 @@ void MakeChoice(int* a, String* strOne, String* strTwo)
 		break;
 
 	}
-
 	std::cout << std::endl;
 	std::cout << std::endl;
-
 }
 
 void writeBothStrings(String* a, String* b) {
