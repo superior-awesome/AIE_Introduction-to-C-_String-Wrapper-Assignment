@@ -1,140 +1,30 @@
-2) String(const char* _str);
-Both strings in this program were origianlly constructed using this method
-Both strings are below:
-	a) Master_Cheif
-	b) Bella_Goth
-3) String(const String & _other);
-This copy constructor is not run so here is the code:
+BELLA_GOTH
+BELLA_GOTH
+Mse
+Bla
 
-String.h:
-	class String:
-	{
-		String(const String & _other);
-
-		...
-
-	}
-
-String.cpp
-	String::String(const String & _other) {
-		length = _other.length;
-		capacity = _other.capacity;
-		str = new char[capacity];
-		strcpy_s(str, capacity, _other.str);
-	};
-4) ~String();
-This copy constructor is not run in this program so here is the code:
-
-String.h:
-	class String:
-	{
-		~String();
-
-		...
-
-	}
-
-String.cpp
-	String::~String() {
-		delete[] str;
-	};
-5) size_t Length() const;
-		Name		Length()
-	a)	Master_Cheif	12
-	b)	Bella_Goth	10
-6) char& CharacterAt(size_t _index);
-		Name		[0]	[2]	[5]	[7]
-	a)	Master_Cheif	M	s	r	C	
-	b)	Bella_Goth	B	l	_	o	7) const char& CharacterAt(size_t _index) const;
-		Name		[0]	[2]	[5]	[7]
-	a)	Master_Cheif	M	s	r	C	
-	b)	Bella_Goth	B	l	_	o	8) bool EqualTo(const String & _other) const;
-Are "Master_Cheif" and "Bella_Goth" equal? 0(1 = yes, 0 = no)
-(can you get the Strings to be equal without changing the code?)
-9) String& Append(const String & _str);
-Enter 1 to append string A to string B.
-Enter 2 to append string B to string A.
-:	a) Master_Cheif
-	b) Bella_GothMaster_Cheif
-10) String& Prepend(const String & _str);
-Enter 1 to prepend string A to string B.
-Enter 2 to prepend string B to string A.
-:	a) Master_Cheif
-	b) Master_CheifBella_GothMaster_Cheif
-11) const char* CStr() const;
-Master_Cheif	Master_Cheif
-Master_CheifBella_GothMaster_Cheif	Master_CheifBella_GothMaster_Cheif
-12) String& ToLower();
-Enter 1 to lower the case of string A.
-Enter 2 to lower the case of string B.
-:	a) Master_Cheif
-	b) master_cheifbella_gothmaster_cheif
-13) String& ToUpper();
-Enter 1 to increase the case of string A.
-Enter 2 to increase the case of string B.
-:	a) Master_Cheif
-	b) MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-14) int Find(const String & _str);
-Is String A a substring of String B? :
-No, MASTER_CHEIFBELLA_GOTHMASTER_CHEIF is not a substring of Master_Cheif
-Is String B a substring of String A? :
-No, Master_Cheif is not a substring of MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-15) int Find(size_t _startIndex, const String & _str);
-Enter a number you would like to check from (cannot be negative):Is String A a substring of String B after index 1?
-
-No, MASTER_CHEIFBELLA_GOTHMASTER_CHEIF is not a substring of Master_Cheif
-Is String B a substring of String A after index 1?
-No, Master_Cheif is not a substring of MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-16) String& Replace(const String & _find, const String & _replace);
-If either string is inside the other, it will be replaced by an untitile'd goose noise
-MASTER_CHEIFBELLA_GOTHMASTER_CHEIF is not a substring of Master_CheifIs String B a substring of String A? :
-No, Master_Cheif is not a substring of MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-	a) Master_Cheif
-	b) MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-17) String& ReadFromConsole();
-New String is: 
-18) String& WriteToConsole();
-	a) dsf
-	b) MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-19) bool operator==(const String & _other);
-dsf== MASTER_CHEIFBELLA_GOTHMASTER_CHEIF returns: FALSE20) bool operator!=(const String & _other);
-dsf= MASTER_CHEIFBELLA_GOTHMASTER_CHEIF returns: TRUE21) String& operator=(const String & _str);
-dsf= MASTER_CHEIFBELLA_GOTHMASTER_CHEIF returns: 
-	a) MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-	b) MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-22) char& operator[](size_t _index);
-		Name		[1]	[3]	[6]	[8]
-	a)	MASTER_CHEIFBELLA_GOTHMASTER_CHEIF	A	T	_	H	
-	b)	MASTER_CHEIFBELLA_GOTHMASTER_CHEIF	A	T	_	H	23) const char& operator[](size_t _index) const;
-		Name		[1]	[3]	[6]	[8]
-	a)	MASTER_CHEIFBELLA_GOTHMASTER_CHEIF	A	T	_	H	
-	b)	MASTER_CHEIFBELLA_GOTHMASTER_CHEIF	A	T	_	H	24) String operator+(const String & _rhs);
-MASTER_CHEIFBELLA_GOTHMASTER_CHEIF + MASTER_CHEIFBELLA_GOTHMASTER_CHEIF = MASTER_CHEIFBELLA_GOTHMASTER_CHEIF (assigned to a new String object).25) String& operator+=(const String & _other);
-MASTER_CHEIFBELLA_GOTHMASTER_CHEIF += MASTER_CHEIFBELLA_GOTHMASTER_CHEIF results in:
-	a) MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-	b) MASTER_CHEIFBELLA_GOTHMASTER_CHEIF
-
-Test 0 - Length() :DATETIME - To do.
-Test 0Length Successful 
-Test 1Failed 
-Test 2Failed 
-Test 3Failed 
-Test 4Failed 
-Test 5Failed 
-Test 6Failed 
-Test 7Failed 
-Test 8Failed 
-Test 9Failed 
-Test 10Failed 
-Test 11Failed 
-Test 12Failed 
-Test 13Failed 
-Test 14Failed 
-Test 15Failed 
-Test 16Failed 
-Test 17Failed 
-Test 18Failed 
-Test 19Failed 
-Test 20Failed 
-Test 21Failed 
-Test 22Failed 
+DATETIME - To do.
+Test 0 Length Successful 
+Test 1 CharacterAt Successful 
+Test 2 const CharacterAt Successful 
+Test 3 EqualTo Successful 
+Test 4 Append Successful 
+Test 5 Prepend Successful 
+Test 6 CStr<QED below> 
+"(*_file) << "strOne->CSty(); ":Master_Chief
+"(*_file) << "strTwo->CSty(); ":Bella_Goth
+Test Result : Successful 
+Test 7 ToLower Successful 
+Test 8 ToUpper Successful 
+Test 9 Find Successful 
+Test 10 Find<_startIndex> Successful 
+Test 11 Replace Successful 
+Test 12 ReadFromConsole<Cannot be automated. QED in Task two Assignement.> Successful 
+Test 13 WriteFromConsole<Cannot be sent to a file. QED in Task two Assignement.> Successful 
+Test 14 operator== Successful 
+Test 15 operator!= Successful 
+Test 16 operator= Successful 
+Test 17 operator[] Successful 
+Test 18 const operator[] Successful 
+Test 19 operator+ Successful 
+Test 20 operator+= Successful 

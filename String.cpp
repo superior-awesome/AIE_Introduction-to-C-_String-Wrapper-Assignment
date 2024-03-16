@@ -362,7 +362,14 @@ String& String::operator=(const String& _str)
 
 	delete str;
 	str = new char[capacity];
-	strcpy_s(str, capacity, _str.str);
+	//strcpy_s(str, capacity, _str.str);
+
+	//
+	for (int i = 0; i < length; i++)
+	{
+		str[i] = _str[i];
+	}
+	str[length] = '\0';
 
 	return *this;
 
