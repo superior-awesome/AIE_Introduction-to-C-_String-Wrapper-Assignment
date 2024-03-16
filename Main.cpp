@@ -24,8 +24,7 @@ int main()
 	std::fstream file;
 	std::fstream* filePtr = &file;
 	
-	//filePtr->open("StringTestOutput.txt", std::ios::out | std::ios::app);	
-	filePtr->open("StringTestOutput.txt", std::ios::out );	
+	filePtr->open("StringTestOutput.txt", std::ios::out | std::ios::app);	
 
 	if (filePtr->is_open())
 	{
@@ -422,20 +421,21 @@ void TestingWriteToFile(std::fstream* _file, String* strOne, String* strTwo)
 		struct tm* localTime = localtime(&now);
 
 		int curYear = localTime->tm_year + 1900;
+		int curMonth = localTime->tm_mon + 1;
 
 		(*_file)
 			<< "Date: "
 			<< localTime->tm_mday
-			<< " \\ "
-			<< localTime->tm_mon
-			<<" \\ "
+			<< "\\"
+			<< curMonth
+			<<"\\"
 			<< curYear
 			<<"\tTime: "
-			<< localTime->tm_sec
+			<< localTime->tm_hour
 			<< ":"
 			<< localTime->tm_min
 			<< ":"
-			<< localTime->tm_hour
+			<< localTime->tm_sec
 			<< "\tSuccessful: "
 			<< successRate
 			<< "%."
